@@ -1,7 +1,6 @@
 import { Link } from 'waku';
-import { Counter } from '../components/counter';
 
-export default async function HomePage() {
+export default async function Menu() {
   const data = await getData();
 
   return (
@@ -9,22 +8,18 @@ export default async function HomePage() {
       <title>{data.title}</title>
       <h1 className="text-4xl font-bold tracking-tight">{data.headline}</h1>
       <p>{data.body}</p>
-      <Counter />
-      <Link to="/about" className="mt-4 inline-block underline">
-        About page
+      <Link to="/" className="mt-4 inline-block underline">
+        Return home
       </Link>
-      <Link to="/menu" className="mt-4 inline-block underline">
-        Menu Page
-      </Link>
-        </div>
+    </div>
   );
 }
 
 const getData = async () => {
   const data = {
-    title: 'Home Page',
-    headline: 'Home Page',
-    body: 'Home page body',
+    title: 'Menu Page',
+    headline: 'Menu',
+    body: 'Menu page body',
   };
 
   return data;
