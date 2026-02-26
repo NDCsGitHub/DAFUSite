@@ -1,8 +1,8 @@
 import '../styles.css';
 
 import type { ReactNode } from 'react';
-import { Footer } from '../components/footer';
-import { Header } from '../components/header';
+import { Footer } from '../components/common/footer';
+import { Header } from '../components/common/header';
 
 type RootLayoutProps = { children: ReactNode };
 
@@ -10,7 +10,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const data = await getData();
 
   return (
-    <div className="font-['Nunito']">
+    <div className="font-['Nunito'] bg-yellow-50 min-h-screen w-full">
       <meta name="description" content={data.description} />
       <link rel="icon" type="image/png" href={data.icon} />
       <link rel="preconnect" href="https://fonts.googleapis.com" />

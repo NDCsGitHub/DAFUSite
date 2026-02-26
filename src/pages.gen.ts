@@ -13,8 +13,14 @@ import type { getConfig as File_Menu_getConfig } from './pages/menu';
 // prettier-ignore
 type Page =
 | ({ path: '/about' } & GetConfigResponse<typeof File_About_getConfig>)
+| { path: '/cart'; render: 'static' }
+| { path: '/contact'; render: 'static' }
 | ({ path: '/' } & GetConfigResponse<typeof File_Index_getConfig>)
-| ({ path: '/menu' } & GetConfigResponse<typeof File_Menu_getConfig>);
+| ({ path: '/menu' } & GetConfigResponse<typeof File_Menu_getConfig>)
+| { path: '/services/catering'; render: 'static' }
+| { path: '/services/events'; render: 'static' }
+| { path: '/services/parties'; render: 'static' }
+| { path: '/services'; render: 'static' };
 
 // prettier-ignore
 declare module 'waku/router' {
