@@ -82,7 +82,7 @@ const HamburgerMenu = () => {
                   className="text-base border border-gray-300 rounded-md px-3 py-1 text-gray-600 bg-gray-50 hover:bg-yellow-50 transition-colors duration-200"
                   onClick={handleClose}
                 >
-                  Private Dining
+                  Parties
                 </RouterLink>
               </div>
             </div>

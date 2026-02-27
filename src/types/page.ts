@@ -1,5 +1,27 @@
-export type PageRoute = "/" | "/menu" | "/about" | "/contact" | "/services" | "/services/catering" | "/services/events" | "/services/parties" | "/cart";
-
+export type PageRoute = | "/"
+  | "/menu"
+  | "/about"
+  | "/contact"
+  | "/services/catering"
+  | "/services/events"
+  | "/services/parties"
+  | "/cart"
+  | `/?${string}`
+  | `/#${string}`
+  | `/menu?${string}`
+  | `/menu#${string}`
+  | `/about?${string}`
+  | `/about#${string}`
+  | `/contact?${string}`
+  | `/contact#${string}`
+  | `/services/catering?${string}`
+  | `/services/catering#${string}`
+  | `/services/events?${string}`
+  | `/services/events#${string}`
+  | `/services/parties?${string}`
+  | `/services/parties#${string}`
+  | `/cart?${string}`
+  | `/cart#${string}`;
 export interface HomePage {
   title: string;
   headline: string;

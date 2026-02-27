@@ -19,8 +19,7 @@ type Page =
 | ({ path: '/menu' } & GetConfigResponse<typeof File_Menu_getConfig>)
 | { path: '/services/catering'; render: 'static' }
 | { path: '/services/events'; render: 'static' }
-| { path: '/services/parties'; render: 'static' }
-| { path: '/services'; render: 'static' };
+| { path: '/services/parties'; render: 'static' };
 
 // prettier-ignore
 declare module 'waku/router' {
