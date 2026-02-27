@@ -1,8 +1,8 @@
-import '../styles.css';
+import "../styles.css";
 
-import type { ReactNode } from 'react';
-import { Footer } from '../components/common/footer';
-import { Header } from '../components/common/header';
+import type { ReactNode } from "react";
+import { Footer } from "../components/common/footer";
+import { Header } from "../components/common/header";
 
 type RootLayoutProps = { children: ReactNode };
 
@@ -20,11 +20,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         precedence="font"
       />
-      
+
       <Header />
-      <main className="m-6 flex items-center *:min-h-64 *:min-w-64 lg:m-0 lg:min-h-svh lg:justify-center">
-        {children}
-      </main>
+      <main className="flex items-center m-5 lg:min-h-svh justify-center pb-32 pt-32">{children}</main>
       <Footer />
     </div>
   );
@@ -32,8 +30,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
 const getData = async () => {
   const data = {
-    description: 'An internet website!',
-    icon: '/images/favicon.png',
+    description: "An internet website!",
+    icon: "/images/favicon.png",
   };
 
   return data;
@@ -41,6 +39,6 @@ const getData = async () => {
 
 export const getConfig = async () => {
   return {
-    render: 'static',
+    render: "static",
   } as const;
 };

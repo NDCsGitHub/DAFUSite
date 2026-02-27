@@ -1,8 +1,14 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import RouterLink from "./RouterLink";
+import RouterLink from "./routerLink";
+import { PageRoute } from "../../types/page";
 
-const PopupMenu = () => {
+type PopupMenuProps = {
+  menuArray: { label: string; to: PageRoute }[];
+  triggerLabel: string;
+};  
+
+const PopupMenu = (props: PopupMenuProps) => {
   const [servicesOpen, setServicesOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +30,7 @@ const PopupMenu = () => {
         onClick={() => setServicesOpen(!servicesOpen)}
         className="text-lg border border-gray-400 rounded-md px-4 py-1 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-sm flex items-center gap-2 hover:cursor-pointer"
       >
-        Services
+        {props.triggerLabel}
         <svg
           className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
           fill="none"
@@ -40,15 +46,16 @@ const PopupMenu = () => {
           servicesOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <RouterLink to="/services/catering" onClick={() => setServicesOpen(false)} className="text-base border-0 rounded-none px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-none border-b border-gray-200 last:border-b-0">
-          Catering
-        </RouterLink>
-        <RouterLink to="/services/events" onClick={() => setServicesOpen(false)} className="text-base border-0 rounded-none px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-none border-b border-gray-200 last:border-b-0">
-          Events
-        </RouterLink>
-        <RouterLink to="/services/parties" onClick={() => setServicesOpen(false)} className="text-base border-0 rounded-none px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-none border-b border-gray-200 last:border-b-0">
-          Parties
-        </RouterLink>
+        {props.menuArray.map((item, index) => (
+          <RouterLink
+            key={index}
+            to={item.to}
+            onClick={() => setServicesOpen(false)}
+            className="text-base border-0 rounded-none px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-none border-b border-gray-200 last:border-b-0"
+          >
+            {item.label}
+          </RouterLink>
+        ))}
       </div>
     </div>
   );

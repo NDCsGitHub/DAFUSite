@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import RouterLink from "./RouterLink";
 import { Router } from "waku/router/client";
+import RouterLink from "./routerLink";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [menusOpen, setMenusOpen] = useState(false);
 
   const handleClose = () => {
     setIsOpen(false);
     setServicesOpen(false);
+    setMenusOpen(false);
   };
   return (
     <div>
@@ -33,13 +35,46 @@ const HamburgerMenu = () => {
           <button onClick={handleClose} className="text-2xl text-gray-700 self-end hover:text-gray-900">
             ✕
           </button>
-          <RouterLink
-            to="/menu"
-            onClick={handleClose}
-            className="w-full text-lg border border-gray-400 rounded-md px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-sm flex items-center justify-between hover:cursor-pointer"
-          >
-            Menu
-          </RouterLink>
+
+          {/* menus accordion */}
+          <div>
+            <button
+              onClick={() => setMenusOpen(!menusOpen)}
+              className="w-full text-lg border border-gray-400 rounded-md px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-sm flex items-center justify-between hover:cursor-pointer"
+            >
+              Menus
+              <svg
+                className={`w-4 h-4 transition-transform duration-300 ${menusOpen ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                menusOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="flex flex-col gap-2 mt-2 ml-4 border-l border-gray-300 pl-4">
+                <RouterLink
+                  to="/menus/dineIn"
+                  className="text-base border border-gray-300 rounded-md px-3 py-1 text-gray-600 bg-gray-50 hover:bg-yellow-50 transition-colors duration-200"
+                  onClick={handleClose}
+                >
+                  Dine-In
+                </RouterLink>
+                <RouterLink
+                  to="/menus/takeout"
+                  className="text-base border border-gray-300 rounded-md px-3 py-1 text-gray-600 bg-gray-50 hover:bg-yellow-50 transition-colors duration-200"
+                  onClick={handleClose}
+                >
+                  Takeout
+                </RouterLink>
+              </div>
+            </div>
+          </div>
 
           {/* Services Accordion */}
           <div>
@@ -96,13 +131,13 @@ const HamburgerMenu = () => {
             Contact
           </RouterLink>
           <RouterLink
-            to="/about"
-            className="text-lg border border-gray-400 rounded-md px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-sm"
+            className="w-full text-lg border border-gray-400 rounded-md px-4 py-2 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-sm flex items-center justify-between hover:cursor-pointer"
+            to="/onlineOrder"
             onClick={handleClose}
           >
-            About
+            Online Order
           </RouterLink>
-          <RouterLink
+          {/* <RouterLink
             to="/cart"
             className="flex items-center gap-2 text-lg border border-gray-400 rounded-md px-4 py-1 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-sm"
           >
@@ -115,7 +150,7 @@ const HamburgerMenu = () => {
               />
             </svg>
             Cart
-          </RouterLink>
+          </RouterLink> */}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ Design and Structure:
 
 - components are organized via features.
 - Pages follow a feature-based structure where each page composes components from its corresponding feat
-- 
+- client components are capitalized file name
 
 **Benefits of this approach:**
 - Easy to locate and modify page-specific components
@@ -31,6 +31,9 @@ useOrderStore.ts - Handles:
 - Order history
 - Current order status
 - Order details
+
+
+
 
 src/
 ├── components/ (components are organized by features)

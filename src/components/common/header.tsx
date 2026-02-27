@@ -1,15 +1,18 @@
 import { Link } from "waku";
 import { useState } from "react";
-import HamburgerMenu from "../ui/hamburgerMenu";
+import HamburgerMenu from "../ui/HamburgerMenu";
 import PopupMenu from "../ui/PopupMenu";
 import { Router } from "waku/router/client";
-import RouterLink from "../ui/RouterLink";
+import RouterLink from "../ui/routerLink";
 
 export const Header = () => {
   const modules = import.meta.glob("./*.tsx", { eager: true });
 
   return (
-    <header className="flex items-center gap-4 p-4 lg:fixed lg:left-0 lg:top-0 border-b border-gray-300 bg-white w-full">
+    <header
+      className="flex items-center gap-4 p-4 fixed left-0 top-0 border-b border-gray-300 w-full z-10"
+      style={{ backgroundColor: "#FFF3E2" }}
+    >
       <h2 className="text-lg  font-bold tracking-tight min-w-20 w-49 px-2 py-1 shrink-0">
         <RouterLink to="/" className="flex items-center gap-2">
           <img src="/public/images/dafuLogo.png" className="w-20 h-auto mr-2" />
@@ -22,12 +25,24 @@ export const Header = () => {
           <HamburgerMenu />
         </div>
         <div className="hidden md:flex items-center gap-2">
-          <RouterLink to="/menu">Menu</RouterLink>
-          <PopupMenu />
+          <PopupMenu
+            menuArray={[
+              { label: "Dine-In", to: "/menus/dineIn" },
+              { label: "Takeout", to: "/menus/takeout" },
+            ]}
+            triggerLabel="Menus"
+          />
+          <PopupMenu
+            menuArray={[
+              { label: "Catering", to: "/services/catering" },
+              { label: "Events", to: "/services/events" },
+              { label: "Parties", to: "/services/parties" },
+            ]}
+            triggerLabel="Services"
+          />
           <RouterLink to="/contact">Contact</RouterLink>
-
-          <RouterLink to="/about">About</RouterLink>
-          <RouterLink
+          <RouterLink to="/onlineOrder">Online Order</RouterLink>
+          {/* <RouterLink
             to="/cart"
             className="flex items-center gap-2 text-lg border border-gray-400 rounded-md px-4 py-1 text-gray-700 bg-white hover:bg-yellow-50 transition-colors duration-200 shadow-sm"
           >
@@ -40,7 +55,7 @@ export const Header = () => {
               />
             </svg>
             Cart
-          </RouterLink>
+          </RouterLink> */}
         </div>
       </nav>
     </header>
