@@ -27,9 +27,10 @@ const HamburgerMenu = () => {
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 md:hidden transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-64 shadow-lg z-50 md:hidden transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+          }`}
+        style={{ backgroundColor: "#FFF3E2" }}
       >
         <div className="flex flex-col gap-4 p-6">
           <button onClick={handleClose} className="text-2xl text-gray-700 self-end hover:text-gray-900">

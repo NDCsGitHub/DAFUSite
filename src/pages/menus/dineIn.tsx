@@ -3,7 +3,7 @@ import React from "react";
 
 const dineIn = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 max-w-6xl w-full mx-auto">
+    <div className="flex flex-col items-center justify-center gap-2 max-w-6xl w-full">
       <img
         className="w-full h-auto mt-4 rounded-lg shadow-md"
         src="../../public/images/DinnerMenu/comboMenu.png"
